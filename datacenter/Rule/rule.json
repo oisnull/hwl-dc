@@ -1,0 +1,308 @@
+﻿[
+  {
+    "Url": "https://edition.cnn.com/2019/02/13/world/china-india-greener-planet-scli-intl/index.html",
+    "Rules": [
+      {
+        "Key": "title",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//h1[@class='pg-headline']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "summary",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='el__leafmedia el__leafmedia--sourced-paragraph']",
+            "ExtractType": "Text"
+          },
+          "RemoveChar": {
+            "IsRegex": false,
+            "Chars": [
+              "(CNN)"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "publishdate",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//p[@class='update-time']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "keys",
+        "IsList": false,
+        "Rule": {
+          "DefaultValue": "CNN NEW"
+        }
+      },
+      {
+        "Key": "imageurls",
+        "IsList": true,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//section[@id='body-text']//img[@src]",
+            "XpathEndAttributes": [
+              "src"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "content",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//section[@id='body-text']"
+          },
+          "RemoveChar": {
+            "IsRegex": true,
+            "Chars": [
+              "<[a|A]\\s*[^>]*>(.*?)</[a|A]>",
+              "<cite\\s*[^>]*>(.*?)</cite>",
+              "<div class=\"zn-body__read-more-outbrain\">.*</div>"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "author",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//span[@class='metadata__byline__author']",
+            "ExtractType": "Text"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Url": "https://www.rt.com/news/451513-facebook-tracks-former-employees-threats/",
+    "Rules": [
+      {
+        "Key": "title",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//h1[@class='article__heading']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "summary",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article__summary summary ']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "publishdate",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//span[@class='date date_article-header']",
+            "ExtractType": "Text"
+          },
+          "RemoveChar": {
+            "IsRegex": false,
+            "Chars": [
+              "Published time:"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "keys",
+        "IsList": false,
+        "Rule": {
+          "DefaultValue": "RT NEW"
+        }
+      },
+      {
+        "Key": "imageurls",
+        "IsList": true,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article__cover']//img[@src]",
+            "XpathEndAttributes": [
+              "src"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "content",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article__text text ']"
+          },
+          "RemoveChar": {
+            "IsRegex": true,
+            "Chars": [
+              "<[a|A]\\s*[^>]*>(.*?)</[a|A]>",
+              "<div class=\"read-more\">([\\s\\S]*)</div>",
+              "<a[^>]+href=\"([^\"]*)\"[^>]*>([\\s\\S]*?)</a>"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "author",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='media__title media__title_arcticle']",
+            "ExtractType": "Text"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Url": "https://www.toutiao.com/",
+    "Rules": [
+      {
+        "Key": "title",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//h1[@class='article-title']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "summary",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']/p[1]",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "publishdate",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-sub']/span[2]",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "imageurls",
+        "IsList": true,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']//img[@src]",
+            "XpathEndAttributes": [
+              "src"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "content",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']"
+          }
+        }
+      },
+      {
+        "Key": "author",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-sub']/span[1]",
+            "ExtractType": "Text"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Url": "https://news.baidu.com/",
+    "Rules": [
+      {
+        "Key": "title",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-title']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "summary",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']/p[1]",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "publishdate",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-source article-source-bjh']",
+            "ExtractType": "Text"
+          }
+        }
+      },
+      {
+        "Key": "imageurls",
+        "IsList": true,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']//img[@src]",
+            "XpathEndAttributes": [
+              "src"
+            ]
+          }
+        }
+      },
+      {
+        "Key": "content",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "//div[@class='article-content']"
+          }
+        }
+      },
+      {
+        "Key": "author",
+        "IsList": false,
+        "Rule": {
+          "XpathExtractModel": {
+            "XpathRule": "(//p[@class='author-name'])[1]",
+            "ExtractType": "Text"
+          }
+        }
+      }
+    ]
+  }
+]
